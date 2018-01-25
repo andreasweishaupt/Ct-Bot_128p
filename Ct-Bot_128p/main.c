@@ -68,7 +68,7 @@ int main(void)
 		display_ausgabe("%4d", adc_wert[7]);
 		*/
 		
-		//Git-Test
+		//Git-Test-2
 		
 		if (adc_wert[6] > 400){
 			led_ein(LED_LINKS);
