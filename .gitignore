@@ -42,6 +42,10 @@
 *.idb
 *.pdb
 
+# Own Excludes
+[Dd]ebug/
+.vs/
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
