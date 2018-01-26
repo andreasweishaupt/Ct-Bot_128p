@@ -22,6 +22,10 @@ int null1 = 0;
 
 int index = 0;
 
+//Linienverfolgung Variablen
+int tr, tl = 0;
+int sr, sl, st = 0;
+
 
 	
 ISR(ADC_vect){
@@ -68,6 +72,13 @@ int main(void)
 		display_ausgabe("%4d", adc_wert[7]);
 		*/
 		
+		/*
+		_delay_ms(500);
+		befehl_schicken(CLEAR);
+		display_ausgabe("%4d", adc_wert[2]);
+		display_ausgabe("%4d", adc_wert[3]);
+		*/
+		
 		//Git-Test-2
 		
 		if (adc_wert[6] > 400){
@@ -79,6 +90,7 @@ int main(void)
 				
 		}else led_aus(LED_RECHTS);
 		
+		/*
 		if(adc_wert[6] < 400 && adc_wert[7] < 400 && adc_wert[2] < 200 && adc_wert[3] < 200){
 			setMotorSpeed(20,20);
 		}else if(adc_wert[6] > 400 && adc_wert[7] > 400){
@@ -96,6 +108,51 @@ int main(void)
 			}else if (adc_wert[3] < 200){
 				setMotorSpeed(20,40);
 			}else setMotorSpeed(50,50);
+		}
+		*/
+		
+		
+		if (!(tr || tl)){
+			if(adc_wert[2] < 100) tl = 1;
+			if(adc_wert[3] < 100) tr = 1;
+			if(sl != 0){
+				if(sl < 0) sl++;
+				if(sl > 0) sl--;
+			}
+			if(sr != 0){
+				if(sr < 0) sr++;
+				if(sr > 0) sr--;
+			}
+			setMotorSpeed(40+sl,40+sr);
+		}
+		else if(tr && tl){
+			setMotorSpeed(0,0);
+			if(adc_wert[2] > 100) tl = 0;
+			if(adc_wert[3] > 100) tr = 0;
+		}
+		else if (tl){
+			if(adc_wert[2] > 100){
+				tl = 0;
+				st = sl;
+				sl = sr;
+				sr = st;
+			}else{
+				sl += 2;
+				sr--;
+				setMotorSpeed(20+sl, 20+sr);
+			}
+		}
+		else if(tr){
+			if(adc_wert[3] > 100){
+				tr = 0;
+				st = sl;
+				sl = sr;
+				sr = st;
+			}else{
+				sl--;
+				sr += 2;
+				setMotorSpeed(20+sl, 20+sr);
+			}
 		}
 		
 		
