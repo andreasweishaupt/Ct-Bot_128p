@@ -23,8 +23,9 @@ int null1 = 0;
 int index = 0;
 
 //Linienverfolgung Variablen
-int tr, tl = 0;
-int sr, sl, st = 0;
+int triggerR, triggerL = 0;
+int speedR, speedL, speedT = -60;
+int teiler = 20;
 
 
 	
@@ -60,6 +61,10 @@ int main(void)
 	ena_ein(ENA_RADLED);
 	sei();
 	
+	
+	
+	
+	
     /* Replace with your application code */
     while (1) 
     {
@@ -77,6 +82,15 @@ int main(void)
 		befehl_schicken(CLEAR);
 		display_ausgabe("%4d", adc_wert[2]);
 		display_ausgabe("%4d", adc_wert[3]);
+		*/
+		
+		
+		/*_delay_ms(500);
+		befehl_schicken(CLEAR);
+		display_ausgabe("%4d", triggerL);
+		display_ausgabe("%4d", speedL);
+		display_ausgabe("%4d", speedR);
+		display_ausgabe("%4d", triggerR);
 		*/
 		
 		//Git-Test-2
@@ -110,48 +124,106 @@ int main(void)
 			}else setMotorSpeed(50,50);
 		}
 		*/
+		if(speedR > 500) speedR = 500;
+		if(speedL > 500) speedL = 500;
 		
 		
-		if (!(tr || tl)){
-			if(adc_wert[2] < 100) tl = 1;
-			if(adc_wert[3] < 100) tr = 1;
-			if(sl != 0){
-				if(sl < 0) sl++;
-				if(sl > 0) sl--;
+		
+		if (!(triggerR || triggerL)){
+			if(adc_wert[2] < 100) triggerL = 1;
+			if(adc_wert[3] < 100) triggerR = 1;
+			
+			if(speedL != 0){
+				/*
+				if(speedL < 0){ speedL += 4;}
+				if(speedL < 0){ speedL += 2;}
+				if(speedL < 0){ speedL += 1;}
+				if(speedL > 0){ speedL -= 4;}
+				if(speedL > 0){ speedL -= 2;}
+				if(speedL > 0){ speedL -= 1;}
+				*/
+				for(int z = 0; z < 5; z++){
+					if(speedL == 0) break;
+					if(speedL < 0) {
+						speedL++;
+						} else{
+						speedL--;
+					}
+				}
 			}
-			if(sr != 0){
-				if(sr < 0) sr++;
-				if(sr > 0) sr--;
+			if(speedR != 0){
+				/*
+				if(speedR < 0){ speedR += 4;}
+				if(speedR < 0){ speedR += 2;}
+				if(speedR < 0){ speedR += 1;}
+				if(speedR > 0){ speedR -= 4;}
+				if(speedR > 0){ speedR -= 2;}
+				if(speedR > 0){ speedR -= 1;}
+				*/
+				for(int z = 0; z < 5; z++){
+					if(speedR == 0) break;
+					if(speedR < 0) {
+						speedR++;
+					} else{
+						speedR--;
+					}
+				}
 			}
-			setMotorSpeed(40+sl,40+sr);
+			setMotorSpeed(20+speedL/teiler,20+speedR/teiler);
 		}
-		else if(tr && tl){
+		else if(triggerR && triggerL){
 			setMotorSpeed(0,0);
-			if(adc_wert[2] > 100) tl = 0;
-			if(adc_wert[3] > 100) tr = 0;
-		}
-		else if (tl){
 			if(adc_wert[2] > 100){
-				tl = 0;
-				st = sl;
-				sl = sr;
-				sr = st;
-			}else{
-				sl += 2;
-				sr--;
-				setMotorSpeed(20+sl, 20+sr);
+				triggerL = 0;
+				speedL += 200;
+			}
+			if(adc_wert[3] > 100){
+				triggerR = 0;
+				speedR += 200;
 			}
 		}
-		else if(tr){
-			if(adc_wert[3] > 100){
-				tr = 0;
-				st = sl;
-				sl = sr;
-				sr = st;
+		else if (triggerL){
+			if(adc_wert[2] > 100){
+				triggerL = 0;
+				speedT = speedL;
+				speedL = speedR - 250;
+				speedR = speedT + 450;
 			}else{
-				sl--;
-				sr += 2;
-				setMotorSpeed(20+sl, 20+sr);
+				if(adc_wert[3] < 100){
+					speedL += 1;
+					//speedR -= 1;
+				}
+				 if(adc_wert[6] > 400){
+					speedL += 100;
+					speedR -= 100;
+					//setMotorSpeed(-50,50);
+					//_delay_ms(1);
+				}
+				speedL += 1;
+				//speedR -= 1;
+				setMotorSpeed(10+speedL/teiler, 10+speedR/teiler);
+			}
+		}
+		else if(triggerR){
+			if(adc_wert[3] > 100){
+				triggerR = 0;
+				speedT = speedR;
+				speedR = speedL - 250;
+				speedL = speedT + 450;
+			}else{
+				if(adc_wert[2] < 100){
+					speedR += 1;
+					//speedL -= 1;
+				}
+				if(adc_wert[7] > 400){
+					speedR += 100;
+					speedL -= 100;
+					//setMotorSpeed(-50,50);
+					//_delay_ms(1);
+				}
+				//speedL -= 1;
+				speedR += 1;
+				setMotorSpeed(10+speedL/teiler, 10+speedR/teiler);
 			}
 		}
 		
