@@ -170,6 +170,9 @@
     <Compile Include="followline.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="followline.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="led.c">
       <SubType>compile</SubType>
     </Compile>

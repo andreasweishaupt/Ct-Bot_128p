@@ -22,11 +22,6 @@ int null1 = 0;
 
 int index = 0;
 
-//Linienverfolgung Variablen
-int triggerR, triggerL = 0;
-int speedR, speedL, speedT = -60;
-int teiler = 20;
-
 
 	
 ISR(ADC_vect){
