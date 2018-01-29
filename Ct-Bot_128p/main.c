@@ -18,14 +18,7 @@ int main(void)
 	//display_ausgabe("Hallo");
 	
     /* Replace with your application code */
-    while (1) 
-<<<<<<< HEAD
-	{		
-
+    while (1) {
 		
-=======
-	{
-		followLine();
->>>>>>> origin/linienverfolgung
-    }
+	};
 }
