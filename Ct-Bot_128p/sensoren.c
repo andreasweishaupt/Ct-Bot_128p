@@ -52,6 +52,19 @@ int getDistance(){
 	return distance/20;
 }
 
+/* berechnung der Entfernung:D = a/(x-b)
+ * D ist die Entfernung,X ist der Ausgabewert des Sensors
+ * A ist die Steigung der Kurve A/X
+ * B ist der Offset der Kurve
+ */
+int adcToDistance(int ausgabewert){
+
+    #define a	  5149		//Wert bekommt man durch experiment a=(x1-x2)*D2*D1/(D1-D2)
+    #define b	  17.554	    //Wert bekommt man durch experiment b=(D2*x2-D1*x1)/(D2-D1)
+	
+	return a / (ausgabewert - b);	
+}
+
 void encoder_isr(void)
 {    unsigned int enc_l=0,enc_r=0;
 
