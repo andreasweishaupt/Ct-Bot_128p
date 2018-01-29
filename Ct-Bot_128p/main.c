@@ -21,7 +21,8 @@ int main(void)
     while (1){
 		
 			
-		display_ausgabe( "%4d ", getAdcSensorValue(4));
+		display_ausgabe( "%4d ", getAdcSensorValue(0));
+		display_ausgabe( "%4d ", adcToDistance(getAdcSensorValue(0)));
 		_delay_ms(500);
 		befehl_schicken(CLEAR);
     }

@@ -46,13 +46,13 @@ void sensoren_isr(void){
 
 int getDistance(int sensor){
 	int distance = 0;
-	if (sensor = 0){
+	if (sensor == 0){
 		for (int i = 0 ; i < 20 ; i++){
 			distance += leftDistance[i];
 		}
 	}
 	
-	if (sensor = 1){
+	if (sensor == 1){
 		for (int i = 0 ; i < 20 ; i++){
 			distance += rightDistance[i];
 		}

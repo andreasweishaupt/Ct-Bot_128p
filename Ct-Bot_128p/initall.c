@@ -16,5 +16,6 @@ void intAllPeripherals(){
 	motor_init();
 	display_init();
 	led_init();
+	ena_ein(ENA_ABSTAND);
 	
 }
