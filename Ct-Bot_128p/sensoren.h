@@ -36,6 +36,7 @@
 #include "adc.h" 
 #include "ena.h"
 #include "motor.h"
+#include "interrupt.h"
 //#include "timer.h"
 //#include "maus.h"
 
@@ -84,6 +85,7 @@ void sensoren_isr(void);
 /* Interruptroutine für radsensor */
 void encoder_isr(void);
 
+int getAdcSensorValue(int);
 
 void encoder_Set(int setl,int setr);
 
