@@ -6,30 +6,30 @@
  */ 
 
 #include "followline.h"
-#include "motor.h"
 
-//gehört hier nicht her
-int adc_wert[8];
+int fl_triggerR, fl_triggerL = 0;
+int fl_speedR, fl_speedL, fl_speedT = 0;
+int fl_divide = 20;
 
 void followLine(){
 	if(fl_speedR > 400) fl_speedR = 400;
 	if(fl_speedL > 400) fl_speedL = 400;
 		
 	if (!(fl_triggerR || fl_triggerL)){
-		if(adc_wert[2] < 100){
+		if(adc_value[2] < 100){
 			fl_triggerL = 1;
 			fl_speedL += 100;
-			fl_speedR -= 100;
+			fl_speedR -= 200;
 		}
-		if(adc_wert[3] < 100){
+		if(adc_value[3] < 100){
 			fl_triggerR = 1;
 			fl_speedR += 100;
-			fl_speedL -= 100;
+			fl_speedL -= 200;
 		}
 			
 		if(fl_speedL != 0){
 			
-			for(int z = 0; z < 5; z++){
+			for(int z = 0; z < 3; z++){
 				if(fl_speedL == 0) break;
 				if(fl_speedL < 0) {
 					fl_speedL++;
@@ -40,7 +40,7 @@ void followLine(){
 		}
 		if(fl_speedR != 0){
 			
-			for(int z = 0; z < 5; z++){
+			for(int z = 0; z < 3; z++){
 				if(fl_speedR == 0) break;
 				if(fl_speedR < 0) {
 					fl_speedR++;
@@ -53,23 +53,21 @@ void followLine(){
 	}
 	else if(fl_triggerR && fl_triggerL){
 		setMotorSpeed(0,0);
-		if(adc_wert[2] > 100){
+		if(adc_value[2] > 100){
 			fl_triggerL = 0;
-			fl_speedL += 200;
 		}
-		if(adc_wert[3] > 100){
+		if(adc_value[3] > 100){
 			fl_triggerR = 0;
-			fl_speedR += 200;
 		}
 	}
 	else if (fl_triggerL){
-		if(adc_wert[2] > 100){
+		if(adc_value[2] > 100){
 			fl_triggerL = 0;
-			speedT = fl_speedL;
-			fl_speedL = fl_speedR - 250;
-			fl_speedR = speedT + 450;
+			fl_speedT = fl_speedL;
+			fl_speedL = fl_speedR - 400;
+			fl_speedR = fl_speedT + 100;
 		}else{
-			if(adc_wert[3] < 100){
+			if(adc_value[3] < 100){
 				fl_speedL += 1;
 				//speedR -= 1;
 			}
@@ -79,13 +77,13 @@ void followLine(){
 		}
 	}
 	else if(fl_triggerR){
-		if(adc_wert[3] > 100){
+		if(adc_value[3] > 100){
 			fl_triggerR = 0;
-			speedT = fl_speedR;
-			fl_speedR = fl_speedL - 250;
-			fl_speedL = speedT + 450;
+			fl_speedT = fl_speedR;
+			fl_speedR = fl_speedL - 400;
+			fl_speedL = fl_speedT + 100;
 		}else{
-			if(adc_wert[2] < 100){
+			if(adc_value[2] < 100){
 				fl_speedR += 1;
 				//speedL -= 1;
 			}

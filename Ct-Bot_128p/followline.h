@@ -9,13 +9,12 @@
 #ifndef FOLLOWLINE_H_
 #define FOLLOWLINE_H_
 
-int fl_triggerR, fl_triggerL = 0;
-int fl_speedR, fl_speedL, speedT = 0;
-int fl_divide = 20;
+#include "motor.h"
+#include "interrupt.h"
+
+
 
 
 void followLine(void);
-
-
 
 #endif /* FOLLOWLINE_H_ */
