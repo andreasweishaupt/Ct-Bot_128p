@@ -15,6 +15,7 @@
 #include "sensoren.h"
 #include "adc.h"
 #include "maus.h"
+#include "move_robot.h"
 
 volatile int adc_wert[8],channel;
 int eins = 0;
@@ -62,8 +63,25 @@ int main(void)
 	sei();
 	
 	
-	
-	
+	/*while(1)
+	{
+		int a = SPEED_VERY_SLOW % 1000;
+		int b = a % 100;
+		int c = SPEED_VERY_SLOW - b;
+		cursor_position(1,1);
+		display_ausgabe("%d",a);
+		cursor_position(1,5);
+		display_ausgabe("%d",b);
+		cursor_position(1,8);
+		display_ausgabe("%d",c);
+		int left_speed = 23;
+		int right_speed = 20;
+		setMotorSpeed(left_speed, right_speed);
+		while(1);
+	}
+	*/
+	move(SPEED_VERY_FAST, DIRECTION_FORWARD);
+	while(1){};
 	
     /* Replace with your application code */
     while (1) 
