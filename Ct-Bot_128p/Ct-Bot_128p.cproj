@@ -167,6 +167,9 @@
     <Compile Include="ena.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="followline.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="led.c">
       <SubType>compile</SubType>
     </Compile>
