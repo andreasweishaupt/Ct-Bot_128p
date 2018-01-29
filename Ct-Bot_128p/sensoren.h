@@ -75,7 +75,7 @@ void position_bestimmung(void);
  * A ist die Steigung der Kurve A/X
  * B ist der Offset der Kurve
  */
-int entfernung(int ausgabewert);
+int adcToDistance(int ausgabewert)
 
 int getDistance();
 

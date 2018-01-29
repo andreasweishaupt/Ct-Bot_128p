@@ -167,8 +167,14 @@
     <Compile Include="ena.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="followline.c">
+		<SubType>compile</SubType>
+    </Compile>
     <Compile Include="initall.c">
       <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="followline.h">
+		<SubType>compile</SubType>
     </Compile>
     <Compile Include="initall.h">
       <SubType>compile</SubType>
