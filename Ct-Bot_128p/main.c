@@ -14,12 +14,14 @@ int main(void)
 {
 	
 	intAllPeripherals();	
-	
+	//display_ausgabe("Hallo");
 	
     /* Replace with your application code */
     while (1) 
-	{	
-		
+	{		
+		display_ausgabe( "%4d ", getAdcSensorValue(4));
+		_delay_ms(500);
+		befehl_schicken(CLEAR);
 		
     }
 }

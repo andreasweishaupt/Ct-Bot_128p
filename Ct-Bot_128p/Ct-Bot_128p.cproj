@@ -188,12 +188,6 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="maus.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="maus.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="motor.c">
       <SubType>compile</SubType>
     </Compile>
