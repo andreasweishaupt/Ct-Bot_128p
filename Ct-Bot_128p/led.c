@@ -18,17 +18,17 @@ void led_set(unsigned int LED){
 void led_init(void){
 	schieberegister_init();
 	LED_STATE = 0x00;
-	led_aus(0xFF);
+	led_off(0xFF);
 }
 
 /* Schaltet einzelne LEDs anandere werden nicht beeinflusst*/
-void led_ein(unsigned int LED){
+void led_on(unsigned int LED){
 	LED_STATE |= LED;
 	led_set(LED_STATE);
 }
 
 /* Schaltet einzelne LEDs ausandere werden nicht beeinflusst*/
-void led_aus(unsigned int LED){
+void led_off(unsigned int LED){
 	LED_STATE &= ~LED;
 	led_set(LED_STATE);
 }

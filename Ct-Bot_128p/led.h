@@ -12,29 +12,29 @@
 #include <avr/io.h>
 #include "shift.h"
 
-#define LED_RECHTS	0x01		/*!< LED in Fahrichtung rechts*/
-#define LED_LINKS	0x02		/*!< LED in Fahrichtung links*/
-#define LED_ROT     0x04		/*!< LED Rot */
-#define LED_ORANGE  0x08		/*!< LED Orange */
-#define LED_GELB    0x10		/*!< LED Gelb */
-#define LED_GRUEN   0x20		/*!< LED Gruen */
-#define LED_TUERKIS 0x40		/*!< LED Tuerkis */
-#define LED_WEISS   0x80		/*!< LED Weiss */
-#define LED_ALL     0xFF		/*!< LED Alle */
+#define LED_RIGHT		0x01		/*!< LED right in driving direction (LED1) */
+#define LED_LEFT		0x02		/*!< LED left in driving direction (LED2) */
+#define LED_RED			0x04		/*!< LED red (LED3) */
+#define LED_ORANGE		0x08		/*!< LED orange (LED4) */
+#define LED_YELLOW		0x10		/*!< LED yellow (LED5) */
+#define LED_GREEN		0x20		/*!< LED green (LED6) */
+#define LED_TURQUOISE	0x40		/*!< LED turqouise (LED7) */
+#define LED_WHITE		0x80		/*!< LED white (LED8) */
+#define LED_ALL			0xFF		/*!< all LED's */
 
 
 
-/* Schaltet eine LED an */
-void led_ein(unsigned LED);
+/* Turns on a single LED */
+void led_on(unsigned LED);
 
-/* Initialisiert die LEDs */
+/* initialize all LEDs */
 void led_init(void);
 
-/* Zeigt eine 8-Bit Variable mit den LEDs an */
+/* A 8-bit variable is shown by the LED's*/
 void led_set(unsigned int LED);
 
-/* Schaltet eine LED aus */
-void led_aus(unsigned LED);
+/* Turns off a single LED */
+void led_off(unsigned LED);
 
 
 

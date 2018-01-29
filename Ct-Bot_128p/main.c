@@ -64,7 +64,6 @@ int main(void)
 	
 	
 	
-	
     /* Replace with your application code */
     while (1) 
     {
@@ -96,13 +95,13 @@ int main(void)
 		//Git-Test-2
 		
 		if (adc_wert[6] > 400){
-			led_ein(LED_LINKS);
-		}else led_aus(LED_LINKS);
+			led_on(LED_LEFT);
+		}else led_off(LED_LEFT);
 			
 		if (adc_wert[7] > 400){
-			led_ein(LED_RECHTS);
+			led_on(LED_RIGHT);
 				
-		}else led_aus(LED_RECHTS);
+		}else led_off(LED_RIGHT);
 		
 		/*
 		if(adc_wert[6] < 400 && adc_wert[7] < 400 && adc_wert[2] < 200 && adc_wert[3] < 200){
@@ -234,4 +233,3 @@ int main(void)
 		
     }
 }
-
