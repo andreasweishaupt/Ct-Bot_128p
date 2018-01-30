@@ -23,21 +23,21 @@ bool cliff_detection()
 
 void test_photocoupler()
 {
-	befehl_schicken(CLEAR);
+	send_command(CLEAR);
 	cursor_position(1,1);
-	display_ausgabe("Left:");
-	display_ausgabe("%d", adc_value[6]);
+	display_write("Left:");
+	display_write("%d", adc_value[6]);
 	cursor_position(2,1);
-	display_ausgabe("Right:");
-	display_ausgabe("%d", adc_value[7]);
+	display_write("Right:");
+	display_write("%d", adc_value[7]);
 	cursor_position(3,1);
 	if (cliff_detection())
 	{
-		display_ausgabe("Cliff detected");
+		display_write("Cliff detected");
 	}
 	else
 	{
-		display_ausgabe("Cliff not detected");
+		display_write("Cliff not detected");
 	}
 	_delay_ms(1000);
 }
