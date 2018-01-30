@@ -9,11 +9,13 @@
 
 int index = 0;
 int index1 = 0;
+channel = 0;
 ISR(ADC_vect){
 	adc_value[channel] = ADCL + (ADCH << 8);
 	channel++;
-	if(channel>=8)
-	channel=0;
+	if(channel>=8){
+		channel=0;
+	}	
 	ADMUX = (1<<REFS0) | (channel & 0x07);       
 	ADCSRA |= (1 << ADSC);
 	leftDistance[index] = adc_value[0];
