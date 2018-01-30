@@ -16,8 +16,8 @@ ISR(ADC_vect){
 	channel=0;
 	ADMUX = (1<<REFS0) | (channel & 0x07);       
 	ADCSRA |= (1 << ADSC);
-	leftDistance[index];
-	rightDistance[index1];
+	leftDistance[index] = adc_value[0];
+	rightDistance[index1] = adc_value[1];
 	index =  (index + 1) %20;
 	index1 = (index1 + 1) %20;
 }
