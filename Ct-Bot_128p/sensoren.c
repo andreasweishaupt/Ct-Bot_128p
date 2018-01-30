@@ -114,9 +114,9 @@ void encoder_isr(void)
 int getAdcSensorValue(int sensor){
 	
 	switch(sensor) {
-		case 0: return adc_value[0];//getDistance(0);
+		case 0: return getDistance(0);
 		break;
-		case 1: return adc_value[1];//getDistance(1); 
+		case 1: return getDistance(1); 
 		break;
 		case 2: return adc_value[2]; 
 		break;
