@@ -8,7 +8,7 @@
 
 #include "InitAll.h"
 #include "followline.h"
-
+#include "interrupt.h"
 
 
 int main(void)
@@ -19,9 +19,11 @@ int main(void)
 
     while (1){
 		
-			
 		display_ausgabe( "%4d ", getAdcSensorValue(0));
 		display_ausgabe( "%4d ", adcToDistance(getAdcSensorValue(0)));
+		display_ausgabe("          ");
+		display_ausgabe( "%4d ", getAdcSensorValue(1));
+		display_ausgabe( "%4d ", adcToDistance(getAdcSensorValue(1)));
 		_delay_ms(500);
 		befehl_schicken(CLEAR);
     }

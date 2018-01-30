@@ -50,14 +50,16 @@ int getDistance(int sensor){
 		for (int i = 0 ; i < 20 ; i++){
 			distance += leftDistance[i];
 		}
+		return distance/20;
 	}
 	
 	if (sensor == 1){
 		for (int i = 0 ; i < 20 ; i++){
 			distance += rightDistance[i];
 		}
+		return distance/20;
 	}	
-	return distance/20;
+	
 }
 
 /* berechnung der Entfernung:D = a/(x-b)
@@ -65,12 +67,13 @@ int getDistance(int sensor){
  * A ist die Steigung der Kurve A/X
  * B ist der Offset der Kurve
  */
-int adcToDistance(int ausgabewert){
+int adcToDistance(int x){
 
-    #define a	  5149		//Wert bekommt man durch experiment a=(x1-x2)*D2*D1/(D1-D2)
-    #define b	  17.554	    //Wert bekommt man durch experiment b=(D2*x2-D1*x1)/(D2-D1)
+    #define a		0.00048318//5149		//Wert bekommt man durch experiment a=(x1-x2)*D2*D1/(D1-D2)
+    #define b		-0.376888//17.554	    //Wert bekommt man durch experiment b=(D2*x2-D1*x1)/(D2-D1)
+	#define c		81.405
 	
-	return a / (ausgabewert - b);	
+	return (a * x * x + b * x + c);//a / (ausgabewert - b);	
 }
 
 void encoder_isr(void)
@@ -111,12 +114,11 @@ void encoder_isr(void)
 int getAdcSensorValue(int sensor){
 	
 	switch(sensor) {
-		case 0: 
-			return getDistance(0);
+		case 0: return adc_value[0];//getDistance(0);
 		break;
-		case 1: return getDistance(1); 
+		case 1: return adc_value[1];//getDistance(1); 
 		break;
-		case 2: return getDistance(2); 
+		case 2: return adc_value[2]; 
 		break;
 		case 3: return adc_value[3];
 		break;
