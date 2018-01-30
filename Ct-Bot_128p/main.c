@@ -10,6 +10,7 @@
 #include "followline.h"
 #include "interrupt.h"
 
+#include <avr/delay.h>
 
 int main(void)
 {
