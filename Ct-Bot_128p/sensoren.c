@@ -116,7 +116,7 @@ int getAdcSensorValue(int sensor){
 		break;
 		case 1: return getDistance(1); 
 		break;
-		case 2: return getDistance(2); 
+		case 2: return adc_value[2]; 
 		break;
 		case 3: return adc_value[3];
 		break;

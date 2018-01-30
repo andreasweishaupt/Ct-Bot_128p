@@ -8,8 +8,7 @@
 
 #include "InitAll.h"
 #include "followline.h"
-
-
+#include <avr/delay.h>
 
 int main(void)
 {
@@ -19,6 +18,9 @@ int main(void)
 	
     /* Replace with your application code */
     while (1) {
-		
+		_delay_ms(100);
+		display_ausgabe("%d", getDistance(0));
+		_delay_ms(500);
+		befehl_schicken(CLEAR);
 	};
 }
