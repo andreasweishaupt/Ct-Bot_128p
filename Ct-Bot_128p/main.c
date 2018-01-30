@@ -16,9 +16,7 @@ int main(void)
 	
 	intAllPeripherals();	
 	//display_ausgabe("Hallo");
-	
-    /* Replace with your application code */
-<<<<<<< HEAD
+
     while (1){
 		
 			
@@ -27,9 +25,5 @@ int main(void)
 		_delay_ms(500);
 		befehl_schicken(CLEAR);
     }
-=======
-    while (1) {
-		
-	};
->>>>>>> initfunktion
+
 }
