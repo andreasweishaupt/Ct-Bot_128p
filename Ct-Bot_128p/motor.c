@@ -6,6 +6,8 @@
  */ 
 
 #include "motor.h"
+
+
 void motor_init(void){
 	DDRD |= 0x30;//Register D setze PD4,PD5 als Ausgang
 	PORTD |= 0x30;//PortD PD4,PD5 auf HIGH setzen

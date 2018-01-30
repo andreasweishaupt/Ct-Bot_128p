@@ -37,8 +37,15 @@
 #include "ena.h"
 #include "motor.h"
 #include "interrupt.h"
-//#include "timer.h"
-//#include "maus.h"
+
+#define SENS_DISTANCE_LEFT	0
+#define SENS_DISTANCE_RIGHT	1
+#define SENS_LINE_LEFT		2
+#define SENS_LINE_RIGHT		3
+#define SENS_LIGHT_LEFT		4
+#define SENS_LIGHT_RIGHT	5
+#define SENS_CLIFF_LEFT		6
+#define SENS_CLIFF_RIGHT	7
 
 volatile int Abstandsensor_data[2];
 volatile int Speed_r;		                        /* Abrollgeschwindigkeit des linken Rades in [mm/s] [-128 bis 127] relaisitisch [-50 bis 50] */
@@ -85,7 +92,20 @@ void sensoren_isr(void);
 /* Interruptroutine für radsensor */
 void encoder_isr(void);
 
-int getAdcSensorValue(int);
+/* returns last measured value of given sensor
+ * input: sensor_typ - number of the sensor
+ *	possible options:
+ *	SENS_DISTANCE_LEFT
+ *	SENS_DISTANCE_RIGHT
+ *	SENS_LINE_LEFT
+ *	SENS_LINE_RIGHT
+ *	SENS_LIGHT_LEFT
+ *	SENS_LIGHT_RIGHT
+ *	SENS_CLIFF_LEFT
+ *	SENS_CLIFF_RIGHT
+ * return: measured value
+ */
+int getAdcSensorValue(int sensor_typ);
 
 void encoder_Set(int setl,int setr);
 

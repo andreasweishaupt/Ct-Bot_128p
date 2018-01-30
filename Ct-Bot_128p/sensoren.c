@@ -46,19 +46,27 @@ void sensoren_isr(void){
 
 int getDistance(int sensor){
 	int distance = 0;
-	if (sensor == 0){
-		for (int i = 0 ; i < 20 ; i++){
+	if (sensor == 0)
+	{
+		for (int i = 0 ; i < 20 ; i++)
+		
+		{
 			distance += leftDistance[i];
 		}
 		return distance/20;
 	}
-	
-	if (sensor == 1){
-		for (int i = 0 ; i < 20 ; i++){
+	else if(sensor == 1)
+	{
+		for (int i = 0 ; i < 20 ; i++)
+		{
 			distance += rightDistance[i];
 		}
 		return distance/20;
-	}	
+	}
+	else
+	{
+		return -1;
+	}
 	
 }
 
@@ -111,27 +119,19 @@ void encoder_isr(void)
 	}
 }
 	
-int getAdcSensorValue(int sensor){
+int getAdcSensorValue(int sensor_typ){
 	
-	switch(sensor) {
+	switch(sensor_typ) {
 		case 0: return adc_value[0];//getDistance(0);
-		break;
 		case 1: return adc_value[1];//getDistance(1); 
-		break;
 		case 2: return adc_value[2]; 
-		break;
 		case 3: return adc_value[3];
-		break;
 		case 4: return adc_value[4];
-		break;
 		case 5: return adc_value[5];
-		break;
 		case 6: return adc_value[6];
-		break;
 		case 7: return adc_value[7];
-		break;
 		default:
-		break;
+		return -1; //error
 	}
 }
 

@@ -14,10 +14,12 @@
 int sl,sr;
 
 
-//Initialisiert die Motoren
+//initialize motor
 void motor_init(void);
 
-//Setzen Motor speed
+/* sets every motor to the given pwm-value
+ * input: left_speed - pwm-value for left motor, range 0-255
+ * input: right_speed - pwm-value for right motor, range 0-255 */
 void setMotorSpeed(int left_speed, int right_speed);
 
 
