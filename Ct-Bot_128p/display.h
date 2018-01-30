@@ -15,26 +15,32 @@
 #include <string.h>
 #include <stdarg.h>
 #include "shift.h"
-//#include "wait.h"
 
-#define CLEAR 0x01		                  /* Kommando zum Löschen */
-#define DISPLAY_CURSORHOME 0x02                	  /* Kommando für den Cursor */
-#define ZEILE_LANGE	20	                      /* Wieviele Zeichen passen in eine Zeile */
-#define PUFFER_GROESSE	(ZEILE_LANGE + 1)  /* Puffergroesse fuer eine Zeile in bytes */
+#define CLEAR 0x01							/* clear/delete display */
+#define DISPLAY_CURSORHOME 0x02             /* set cursor to homeposition */
+#define ZEILE_LANGE	20	                    /* lenght of the display-line */
+#define PUFFER_GROESSE	(ZEILE_LANGE + 1)	/* size of the display-puffer per line */
 
-/* Init Display */
+/* initialize display */
 void display_init(void);
 
+/* writes single bytes of data */
 void write_data(char data);
 
-/* Cursorposition*/
-void cursor_position(int zeile, int spalte);
+/* sets the cursorposition to given values
+ * input: row - row to set the cursor, allowed values 1-4
+ * input: column - column to set the cursor, allowed values 1-20
+*/
+void cursor_position(int row, int column);
 
-/* Schreibt einen String auf das Display.*/
-void display_ausgabe(char *format, ...);
+/* writes data to the lcd
+ * if you want to write a sensorvalue (int/bool/etc...) to the display
+ * use: "display_write( "%d", value);" */
+void display_write(char *format, ...);
 
-/*ein befehl an das Display senden*/
-void befehl_schicken(unsigned char befehl);
+/* sends a command to the display
+ * if you want to clear the display use: "send_command(CLEAR);"*/
+void send_command(unsigned char command);
 
 
 

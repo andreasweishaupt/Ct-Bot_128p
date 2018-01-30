@@ -37,7 +37,7 @@ void write_data(char data){ //ein Zeichen aus data in den Displayspeicher schrei
       PORTC &= ~0x07;	
 }
  
-void befehl_schicken(unsigned char befehl){		//ein befehl an das Display senden
+void send_command(unsigned char befehl){		//ein befehl an das Display senden
 	unsigned char i;
 	schieberegister_data_schicken(befehl,(1<<1),0x04);       /*SRCLK = PORTC.1 = 1 und RCLK=PC2=1*/
 	
@@ -51,23 +51,23 @@ void befehl_schicken(unsigned char befehl){		//ein befehl an das Display senden
 void cursor_position (int zeile, int spalte) {
    switch (zeile) {
     case 1:
-		befehl_schicken(0x80 + spalte - 1);
+		send_command(0x80 + spalte - 1);
 		break;
     case 2:
-		befehl_schicken(0xc0 + spalte - 1);
+		send_command(0xc0 + spalte - 1);
 		break;
     case 3:
-		befehl_schicken(0x94 + spalte - 1);
+		send_command(0x94 + spalte - 1);
 		break;
     case 4:
-		befehl_schicken(0xd4 + spalte - 1);
+		send_command(0xd4 + spalte - 1);
 		break;
     default: break;
    }
 }
 
 /*Schreibt einen String auf das Display.*/
-void display_ausgabe(char *format, ...) {
+void display_write(char *format, ...) {
 	
 	unsigned int zeichen = 0;
 	va_list	args;
@@ -125,7 +125,7 @@ void display_init(void)
         for (j=0;j<100 ;j++ ){}
        }		
 	
-	befehl_schicken(0x0f);  		//Display On, Cursor On, Cursor Blink
-	befehl_schicken(CLEAR); // Display löschen, Cursor Home
+	send_command(0x0f);  		//Display On, Cursor On, Cursor Blink
+	send_command(CLEAR); // Display löschen, Cursor Home
 	
 }
