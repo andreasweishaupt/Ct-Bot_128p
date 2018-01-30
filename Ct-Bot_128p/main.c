@@ -10,6 +10,8 @@
 #include "followline.h"
 #include "interrupt.h"
 #include <avr/delay.h>
+#include "stay_on_table.h"
+#include "motor.h"
 
 int main(void)
 {
