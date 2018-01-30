@@ -15,8 +15,7 @@
 int main(void)
 {
 	
-	intAllPeripherals();	
-	//display_ausgabe("Hallo");
+	intAllPeripherals();
 
     while (1){
 		
@@ -28,6 +27,4 @@ int main(void)
 		_delay_ms(500);
 		befehl_schicken(CLEAR);
     }
-
-	
 }
