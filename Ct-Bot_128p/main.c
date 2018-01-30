@@ -7,19 +7,18 @@
 
 
 #include "InitAll.h"
-
+#include <avr/delay.h>
+#include "stay_on_table.h"
+#include "motor.h"
 
 
 int main(void)
 {
 	
-	intAllPeripherals();	
+	intAllPeripherals();
 	
-	
-    /* Replace with your application code */
-    while (1) 
-	{	
-		
-		
+	while (1)
+	{
+		    
     }
 }
