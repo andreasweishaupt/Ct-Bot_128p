@@ -11,11 +11,11 @@
 #ifndef STAY_ON_TABLE_H_
 #define STAY_ON_TABLE_H_
 
-int m_treshold;
+int m_threshold;
 
 /* initialize the photocoupler
  * input: treshold - all measured values above treshold will be detected as chasm */
-void init_photocoupler(int treshold);
+void init_photocoupler(int threshold);
 
 /* detects cliffs by measuring the front photocouplers
  * !!! note: init_photocoupler() has to be called before using this method

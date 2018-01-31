@@ -7,14 +7,14 @@
 #include "stay_on_table.h"
 #include "display.h"
 
-void init_photocoupler(int treshold)
+void init_photocoupler(int threshold)
 {
-	m_treshold = treshold;
+	m_threshold = threshold;
 }
 
 bool cliff_detection()
 {
-	if(adc_value[6] > m_treshold || adc_value[7] > m_treshold)
+	if(adc_value[6] > m_threshold || adc_value[7] > m_threshold)
 	{
 		return true;
 	}

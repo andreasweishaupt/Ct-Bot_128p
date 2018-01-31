@@ -212,6 +212,12 @@
     <Compile Include="shift.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="stay_on_table.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="stay_on_table.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
