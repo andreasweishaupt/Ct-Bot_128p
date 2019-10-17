@@ -17,15 +17,18 @@ int main(void)
 {
 	
 	intAllPeripherals();
+	//init_photocoupler(400);
 
     while (1){
-		
-		display_write( "%4d ", getAdcSensorValue(0));
-		display_write( "%4d ", adcToDistance(getAdcSensorValue(0)));
+		/*
+		display_write( "%4d ", getAdcSensorValue(4));
 		display_write("          ");
-		display_write( "%4d ", getAdcSensorValue(1));
-		display_write( "%4d ", adcToDistance(getAdcSensorValue(1)));
+		display_write( "%4d ", getAdcSensorValue(5));
 		_delay_ms(500);
 		send_command(CLEAR);
+		*/
+		//test_photocoupler();
+		//move_cliff_detection();
+		followLine();
     }
 }

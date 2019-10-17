@@ -46,17 +46,17 @@ void move_cliff_detection()
 {
 	if (cliff_detection())
 	{
-		setMotorSpeed(-200,-200);
-		_delay_ms(400);
+		setMotorSpeed(-150,-150);
+		_delay_ms(100);
 		setMotorSpeed(0,0);
 		_delay_ms(100);
-		setMotorSpeed(255,-255);
-		_delay_ms(700);
+		setMotorSpeed(200,-200);
+		_delay_ms(300);
 		setMotorSpeed(0,0);
 	}
 	else
 	{
-		setMotorSpeed(200,200);
+		setMotorSpeed(100,100);
 		_delay_us(1);
 		setMotorSpeed(0,0);
 		_delay_us(10);
